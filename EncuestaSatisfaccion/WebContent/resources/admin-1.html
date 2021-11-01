@@ -1,0 +1,157 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Encuesta">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="images/favicon.ico" >
+
+    <title>Administración de Encuestas Mintrabajo</title>
+    
+    <link href="css/jquery-ui.css" rel="stylesheet" type="text/css">
+    
+    <link href="css/primefaces.css" rel="stylesheet" type="text/css">
+    
+    <link href="css/encuestas.css" rel="stylesheet" type="text/css">
+  
+</head>
+
+<body class="interna">
+<div id="top">
+	<header>
+        <div class="contenedor">
+            <h1>Administración de Encuestas</h1>
+            
+            <div class="mintrabajo">
+               <a href="http://www.mintrabajo.gov.co/" target="_blank">
+                  <h2>Mintrabajo</h2>
+               </a>
+            </div>
+        </div>
+	</header>
+</div>
+
+<!--Inicio del contenido-->
+    	
+    	<div class="contenedor principal">
+        	
+        	<div class="inner">
+                	<h3>Crear nueva encuesta</h3>
+
+                    <p>Diligencie los campos del siguiente formulario para crear una nueva encuesta. Tenga en cuenta que los campos marcados con (*) indican información obligatoria.
+Deje el campo “Fecha de Inicio” y “Fecha de Finalización” en blanco si desea que sea publicada inmediatamente, y/o que no finalice de manera automática.</p>   
+
+                    <fieldset id="" class="ui-fieldset ui-widget ui-widget-content ui-corner-all ui-hidden-container" data-widget="">
+                    
+                    <div class="ui-grid ui-grid-responsive">
+                        <div class="ui-grid-row">
+                            <div class="ui-grid-col-6">
+                                <label id="" class="ui-outputlabel ui-widget">Título de la encuesta<span class="ui-outputlabel-rfi">*</span></label>
+                                <input id="" name="" type="text" class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all inputText encuestas-ancho" role="textbox" aria-disabled="false" aria-readonly="false">
+                                <div id="" aria-live="polite" class="ui-message"></div>
+                            </div>
+                            <div class="ui-grid-col-3">
+                                <label id="" class="ui-outputlabel ui-widget" for="">Fecha de inicio</label>
+                                <input id="" name="" type="text" class="ui-inputfield ui-widget ui-state-default ui-corner-all hasDatepicker encuestas-ancho" aria-labelledby="" data-p-label="" role="textbox" aria-disabled="false" aria-readonly="false" value="yyyy/mm/dd hh:mm:ss"><!-- Se recomienda input como 'German' en http://www.primefaces.org/showcase/ui/input/calendar.xhtml -->
+                                <div id="" aria-live="polite" class="ui-message"></div>
+                            </div>
+                            <div class="ui-grid-col-3">
+                                <label id="" class="ui-outputlabel ui-widget" for="">Fecha de finalización</label>
+                                <input id="" name="" type="text" class="ui-inputfield ui-widget ui-state-default ui-corner-all hasDatepicker encuestas-ancho" aria-labelledby="" data-p-label="" role="textbox" aria-disabled="false" aria-readonly="false" value="yyyy/mm/dd hh:mm:ss"><!-- Se recomienda input como 'German' en http://www.primefaces.org/showcase/ui/input/calendar.xhtml -->
+                                <div id="" aria-live="polite" class="ui-message"></div>
+                            </div>                            
+                        </div>                     
+                    </div>                    
+                    </fieldset>
+                    <div class="encuestas-botones">
+                        <button id="" name="" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" onclick="" type="submit" role="button" aria-disabled="false"><span class="ui-button-text ui-c">Guardar</span></button>
+                        <button id="" name="" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" onclick="" type="submit" role="button" aria-disabled="false"><span class="ui-button-text ui-c">Guardar y agregar preguntas</span></button>
+                    </div>
+					
+					<div class="table-form">
+                        
+                        <div class="ui-datatable ui-widget">
+                        	<div class="ui-datatable-tablewrapper">
+                            	<table>
+                                	<thead>
+                                    	<tr role="row">
+                                        	<th class="ui-state-default"><span>ID</span></th>
+                                            <th class="ui-state-default"><span>Título de la encuesta</span></th>
+                                            <th class="ui-state-default"><span>Fecha de inicio</span></th>
+                                            <th class="ui-state-default"><span>Fecha de finalización</span></th>
+                                            <th class="ui-state-default"><span>Preguntas</span></th>
+                                            <th class="ui-state-default"><span>Acciones</span></th>
+                                      	</tr>
+                                 	</thead>
+                                    <tbody class="ui-datatable-data ui-widget-content">
+                                        <tr class="ui-widget-content ui-datatable-even">
+                                            <td>1140</td>
+                                            <td>Título de la encuesta</td>
+                                            <td>20/04/2016 11:30:23</td>
+                                            <td>20/04/2017 11:30:23</td>
+                                            <td>3</td>
+                                            <td><a href="#" class="ver accion" title="Ver">Ver</a> <a href="#" class="editar accion" title="Editar">Editar</a> <a href="#" class="borrar accion" title="Borrar">Borrar</a> <a href="#" class="consultar accion" title="Consultar">Consultar</a></td>
+                                        </tr>
+                                        <tr class="ui-widget-content ui-datatable-odd">
+                                            <td>1140</td>
+                                            <td>Título de la encuesta</td>
+                                            <td>20/04/2016 11:30:23</td>
+                                            <td>20/04/2017 11:30:23</td>
+                                            <td>3</td>
+                                            <td><a href="#" class="ver accion"></a> <a href="#" class="editar accion"></a> <a href="#" class="borrar accion"></a> <a href="#" class="consultar accion"></a></td>
+                                        </tr>
+                                        <tr class="ui-widget-content ui-datatable-even">
+                                            <td>1140</td>
+                                            <td>Título de la encuesta</td>
+                                            <td>20/04/2016 11:30:23</td>
+                                            <td>20/04/2017 11:30:23</td>
+                                            <td>3</td>
+                                            <td><a href="#" class="ver accion"></a> <a href="#" class="editar accion"></a> <a href="#" class="borrar accion"></a> <a href="#" class="consultar accion"></a></td>
+                                        </tr>
+                                  	</tbody>
+                            	</table>
+                        	</div>
+                            <div class="ui-paginator ui-widget-header">
+                                <span class="ui-paginator-first ui-paginator-element ui-state-default ui-corner-all ui-state-disabled">
+                                    <span class="ui-icon ui-icon-seek-first">p</span>
+                               	</span>
+                                <span class="ui-paginator-prev ui-paginator-element ui-state-default ui-corner-all ui-state-disabled">
+                                	<span class="ui-icon ui-icon-seek-prev">p</span>
+                                </span>
+                                <span class="ui-paginator-pages">
+                                	<span class="ui-paginator-page ui-paginator-element ui-state-default ui-corner-all ui-state-active">1</span>
+                                    <span class="ui-paginator-page ui-paginator-element ui-state-default ui-corner-all">2</span>
+                                    <span class="ui-paginator-page ui-paginator-element ui-state-default ui-corner-all">3</span>
+                                    <span class="ui-paginator-page ui-paginator-element ui-state-default ui-corner-all">4</span>
+                                    <span class="ui-paginator-page ui-paginator-element ui-state-default ui-corner-all">5</span>
+                              	</span>
+                                <span class="ui-paginator-next ui-paginator-element ui-state-default ui-corner-all">
+                                	<span class="ui-icon ui-icon-seek-next">p</span>
+                              	</span>
+                                <span class="ui-paginator-last ui-paginator-element ui-state-default ui-corner-all">
+                                	<span class="ui-icon ui-icon-seek-end">p</span>
+                                </span>
+                            </div>
+                     	</div>    
+                        
+                  	</div>
+        	</div>
+        </div>
+
+<!--Hasta acá contenido-->
+
+    <footer><!-- Opcional -->
+    	<div class="contenedor">
+        	<div class="inner">
+            	Footer opcional
+        	</div>
+        </div>
+    </footer>
+
+<script src="js/jquery.js"></script>
+<script src="js/jquery-ui.js"></script>
+<!-- Agregar scripts de primefaces -->
+
+</body>
+</html>

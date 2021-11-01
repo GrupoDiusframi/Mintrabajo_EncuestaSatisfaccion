@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	<h:form id="frmMessage" prependId="false">
+		<p:messages id="messages" showDetail="true" globalOnly="false"
+			autoUpdate="true" rendered="false" />
+	</h:form>
+	<h:form id="frmMenu" prependId="false">
+		<p:menubar>
+			<p:submenu label="Entrada">
+				<p:submenu label="Radicacion Entrada">
+					<p:menuitem value="Formulario de entrada" url="" />
+				</p:submenu>
+				<p:menuitem value="Consultar radicados de entrada" url="#" />
+			</p:submenu>
+			<p:submenu label="Salida">
+				<p:submenu label="Radicacion Salida">
+					<p:menuitem value="Formulario de salida" url="#" />
+					<p:menuitem value="Aprobar radicacion de salida" url="#" />
+					<p:menuitem value="Radicar" url="#" />
+					<p:menuitem value="Correspondencia" url="#" />
+				</p:submenu>
+				<p:menuitem value="Consultar radicados de salida" url="#" />
+			</p:submenu>
+		</p:menubar> 
+	</h:form>
+</ui:composition>

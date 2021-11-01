@@ -1,0 +1,6 @@
+######Datos de conexion LDAP###################
+
+driver=com.sun.jndi.ldap.LdapCtxFactory
+url=ldap://172.20.22.3:389
+domain=mintrabajo
+security_authentication=simple

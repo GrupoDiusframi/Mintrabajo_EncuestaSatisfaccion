@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+	<!-- RESPUESTA -->
+<div class="borde-respuesta">
+	<p:fieldset id="fsRespuesta" legend="Respuesta">
+		<div class="ui-grid ui-grid-responsive">
+			<div class="ui-grid-row">
+				<div class="ui-grid-col-6">
+					<p:inputTextarea id="itTituloRespuesta" styleClass="#{encuestaBean.valorRespuesta ? '' : 'ui-state-error'}"
+						value="#{encuestaBean.respuesta.titulo}" rows="2" cols="50"
+						maxlength="500" autoResize="false" />
+					<p:tooltip showEvent="focus" for="itTituloRespuesta"
+						value="#{mintrabajo['mintrabajo.tooltip.tituloRespuesta']}" />
+					<p:message for="itTituloRespuesta" />
+				</div>
+				<div class="ui-grid-col-2"  style="padding-right: 20px;padding-left: 210px;">
+					<p:outputLabel for="somOrdenRespuesta"
+						value="#{mintrabajo['mintrabajo.label.orden']}" />
+					<p:selectOneMenu id="somOrdenRespuesta" style="width:120px"
+						value="#{encuestaBean.respuesta.orden}"
+						styleClass="#{encuestaBean.ordenRespuesta ? '' : 'ui-state-error'}">
+						
+						<f:selectItem itemLabel="-Seleccione la opción-" />
+						<f:selectItem itemLabel="1" itemValue="1" />
+						<f:selectItem itemLabel="2" itemValue="2" />
+						<f:selectItem itemLabel="3" itemValue="3" />
+						<f:selectItem itemLabel="4" itemValue="4" />
+						<f:selectItem itemLabel="5" itemValue="5" />
+					</p:selectOneMenu>
+					<p:tooltip showEvent="focus" for="somOrdenRespuesta"
+						value="#{mintrabajo['mintrabajo.tooltip.ordenRespuesta']}" />
+					<p:message for="somOrdenRespuesta" />
+				</div>
+			</div>
+		</div>
+		<!-- BOTONES -->
+		<div class="encuestas-botones">
+			<p:commandButton value="#{not encuestaBean.editarRespuesta ? mintrabajo['mintrabajo.label.agregar']: mintrabajo['mintrabajo.label.aceptar']}"
+				actionListener="#{encuestaBean.agregarEliminarYOEditarRespuestaActionListener}"
+				update=":frmRegistroEncuesta:fsRespuesta :frmRegistroEncuesta:tbRespuestas" />				
+			<p:spacer width="30" />
+			<p:commandButton id="cbLimpiarRespuestas" value="Limpiar"
+				update=":frmRegistroEncuesta:fsRespuesta" immediate="true">
+				<p:resetInput target=":frmRegistroEncuesta:fsRespuesta" />
+			</p:commandButton>
+		</div>
+		<!-- TABLA PREGUNTAS -->
+		<h:panelGroup id="pgRespuestas">
+			<p:dataTable id="tbRespuestas" var="respuestaRow"
+				value="#{encuestaBean.pregunta.respuestas}" rows="10"
+				paginator="true">
+				<p:column headerText="Título">
+					<h:outputText value="#{respuestaRow.titulo}"/>
+				</p:column>
+				<p:column headerText="Orden">
+					<h:outputText value="#{respuestaRow.orden}" />
+				</p:column>
+				<p:column headerText="Acciones">
+					<p:commandLink id="clEditar" styleClass="editar accion"
+						actionListener="#{encuestaBean.editarRespuesta}" update=":frmRegistroEncuesta:fsRespuesta">
+						<f:attribute name="attEditar" value="#{respuestaRow}" />
+					</p:commandLink>
+					<p:commandLink id="clEliminar" styleClass="borrar accion"
+						actionListener="#{encuestaBean.eliminarRespuestaAction}"
+						update=":frmRegistroEncuesta:fsRespuesta :frmRegistroEncuesta:tbRespuestas" >
+						<f:attribute name="attEliminar" value="#{respuestaRow}" />
+					</p:commandLink>
+				</p:column>
+			</p:dataTable>
+		</h:panelGroup>
+	</p:fieldset>
+	</div>
+</ui:composition>

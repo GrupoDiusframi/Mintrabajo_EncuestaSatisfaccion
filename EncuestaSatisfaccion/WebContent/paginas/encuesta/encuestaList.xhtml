@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<f:view contentType="text/html">
+	<h:head>
+		<title>Mintrabajo República de Colombia</title>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="description" content="Encuesta" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="shortcut icon" href="../../resources/images/favicon.ico" />
+		<link href="../../resources/css/jquery-ui.css" rel="stylesheet"
+			type="text/css" />
+		<link href="../../resources/css/primefaces.css" rel="stylesheet"
+			type="text/css" />
+		<link href="../../resources/css/encuestas.css" rel="stylesheet"
+			type="text/css" />
+		
+	</h:head>
+	<h:body>
+		<!-- HEADER -->
+		<c:if test="#{administradorBean.esAdmon}">
+			<ui:include  src="../../resources/html/header.xhtml" />
+		</c:if>
+		
+		<p:messages id="mensajes" showDetail="false" life="2000" />
+		<h:form id="frmRegistroEncuesta" prependId="false" >
+			<div class="contenedor principal">
+				<div class="inner">
+					<p:fieldset id="fsEncuestaList" legend="Encuestas">
+						<div class="ui-fieldset-content">
+							<p:dataTable id="tbEncuestas" var="encuestaRow"
+								value="#{administradorBean.encuestas}" rows="10"
+								paginator="true" rowKey="#{encuestaRow.codigo}"
+								selection="#{administradorBean.encuesta}" selectionMode="single">
+								<f:facet name="header">
+									<h:panelGroup id="pgAccionesEncuentas">
+										<p:commandButton id="cbAgregarEncuesta"
+											value="#{mintrabajo['mintrabajo.label.agregar']}"
+											actionListener="#{administradorBean.agregarEncuesta}"
+											update=":mensajes" 
+											 />
+										<p:commandButton id="cmEditarEncuestas"
+											value="#{mintrabajo['mintrabajo.label.editar']}"
+											actionListener="#{administradorBean.editarEncuesta}"
+											disabled="#{not administradorBean.filaSeleccionada}"
+											update=":mensajes"
+											 />
+									</h:panelGroup>
+								</f:facet>
+								<p:ajax event="rowSelect"
+									listener="#{administradorBean.onRowSelect}"
+									update=":frmRegistroEncuesta:tbEncuestas" />
+								<!--<p:ajax event="rowUnselect"
+									listener="#{dtSelectionView.onRowUnselect}" update=":form:msgs" />-->
+								<p:column selectionMode="single" style="width:12px;text-align:center"/>
+								<p:column styleClass="background: #35348A;" headerText="#{mintrabajo['mintrabajo.label.codigo']}">
+									<h:outputText value="#{encuestaRow.codigo}" />
+								</p:column>
+								<p:column styleClass="background: #35348A;" headerText="#{mintrabajo['mintrabajo.label.titulo']}">
+									<h:outputText value="#{encuestaRow.titulo}" />
+								</p:column>
+								<p:column
+									headerText="#{mintrabajo['mintrabajo.label.fechaCreacion']}">
+									<h:outputText value="#{encuestaRow.fechaCreacion}" />
+								</p:column>
+								<p:column
+									headerText="#{mintrabajo['mintrabajo.label.fechaModificacion']}">
+									<h:outputText value="#{encuestaRow.fechaModificacion}" />
+								</p:column>
+							</p:dataTable>
+						</div>
+					</p:fieldset>
+					<!-- <div class="btn btn-info"> -->
+					<div class="encuestas-botones">
+						<p:commandButton value="#{mintrabajo['mintrabajo.label.salir']}"
+							actionListener="#{administradorBean.salirAction}"
+							rendered="#{administradorBean.esAdmon}"
+							/>
+					</div>
+				</div>
+			</div>
+		</h:form>
+		<!-- FOOTER -->
+		<c:if test="#{administradorBean.esAdmon}">
+			<ui:include src="../../resources/html/footer.xhtml" />
+		</c:if>
+		<script src="js/jquery.js"></script>
+		<script src="js/jquery-ui.js"></script>
+	</h:body>
+</f:view>
+</html>

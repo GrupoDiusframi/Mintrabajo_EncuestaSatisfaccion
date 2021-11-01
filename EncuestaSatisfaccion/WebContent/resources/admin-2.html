@@ -1,0 +1,238 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Encuesta">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="images/favicon.ico" >
+
+    <title>Administración de Encuestas Mintrabajo</title>
+    
+    <link href="css/jquery-ui.css" rel="stylesheet" type="text/css">
+    
+    <link href="css/primefaces.css" rel="stylesheet" type="text/css">
+    
+    <link href="css/encuestas.css" rel="stylesheet" type="text/css">
+  
+</head>
+
+<body class="interna">
+<div id="top">
+	<header>
+        <div class="contenedor">
+            <h1>Administración de Encuestas</h1>
+            
+            <div class="mintrabajo">
+               <a href="http://www.mintrabajo.gov.co/" target="_blank">
+                  <h2>Mintrabajo</h2>
+               </a>
+            </div>
+        </div>
+	</header>
+</div>
+
+<!--Inicio del contenido-->
+    	
+    	<div class="contenedor principal">
+        	
+        	<div class="inner">
+                	<h3>Título de la encuesta</h3>
+
+                    <p>Diligencie los campos del siguiente formulario para crear preguntas y opciones para la encuesta.</p>   
+
+                    <fieldset id="" class="ui-fieldset ui-widget ui-widget-content ui-corner-all ui-hidden-container" data-widget="">
+                    
+                    <div class="ui-grid ui-grid-responsive">
+                        <div class="ui-grid-row">
+                            <div class="ui-grid-col-6">
+                                <label id="" class="ui-outputlabel ui-widget">Pregunta<span class="ui-outputlabel-rfi">*</span></label>
+                                <input id="" name="" type="text" class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all inputText encuestas-ancho" role="textbox" aria-disabled="false" aria-readonly="false">
+                                <div id="" aria-live="polite" class="ui-message"></div>
+                            </div>
+                            <div class="ui-grid-col-3">
+                                <label id="" class="ui-outputlabel ui-widget" for="">Importancia<span class="ui-outputlabel-rfi">*</span></label>
+                                <select id="" name="" size="1" class="encuestas-ancho">
+                                	<option value="">Seleccione...</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                                <div id="" aria-live="polite" class="ui-message"></div>
+                            </div>
+                            <div class="ui-grid-col-3">
+                                <label id="" class="ui-outputlabel ui-widget" for="">Orden<span class="ui-outputlabel-rfi">*</span></label>
+                                <select id="" name="" size="1" class="encuestas-ancho">
+                                	<option value="">Seleccione...</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                                <div id="" aria-live="polite" class="ui-message"></div>
+                            </div>                       
+                        </div>
+                        <h4>Respuestas:</h4>
+                        <div class="ui-grid-row">
+                        	<div class="ui-datatable ui-widget ui-grid-col-12">
+                                <div class="ui-datatable-tablewrapper">
+                                    <table>
+                                        <thead>
+                                            <tr role="row">
+                                                <th class="ui-state-default"><span>ID</span></th>
+                                                <th class="ui-state-default"><span>Respuesta</span></th>
+                                                <th class="ui-state-default"><span>Importancia</span></th>
+                                                <th class="ui-state-default"><span>Orden</span></th>
+                                                <th class="ui-state-default"><span>Acciones</span></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="ui-datatable-data ui-widget-content">
+                                            <tr class="ui-widget-content ui-datatable-even">
+                                                <td><input id="" name="" type="text" readonly class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all inputText encuestas-ancho" role="textbox" aria-disabled="false" value="1003" aria-readonly="true"></td>
+                                                <td><input id="" name="" type="text" class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all inputText encuestas-ancho" role="textbox" aria-disabled="false" value="" aria-readonly="false"></td>
+                                                <td><select id="" name="" size="1" class="encuestas-ancho">
+                                                    <option value="">Seleccione...</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                </select></td>
+                                                <td><select id="" name="" size="1" class="encuestas-ancho">
+                                                    <option value="">Seleccione...</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                </select></td>
+                                                <td><a href="#" class="guardar accion" title="Guardar">Guardar</a></td>
+                                            </tr>
+                                            <tr class="ui-widget-content ui-datatable-odd">
+                                                <td>1001</td>
+                                                <td>Si</td>
+                                                <td>1</td>
+                                                <td>1</td>
+                                                <td><a href="#" class="ver accion"></a> <a href="#" class="editar accion"></a> <a href="#" class="borrar accion"></a></td>
+                                            </tr>
+                                            <tr class="ui-widget-content ui-datatable-even">
+                                                <td>1002</td>
+                                                <td>No</td>
+                                                <td>2</td>
+                                                <td>2</td>
+                                                <td><a href="#" class="ver accion"></a> <a href="#" class="editar accion"></a> <a href="#" class="borrar accion"></a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="ui-paginator ui-widget-header">
+                                    <span class="ui-paginator-first ui-paginator-element ui-state-default ui-corner-all ui-state-disabled">
+                                        <span class="ui-icon ui-icon-seek-first">p</span>
+                                    </span>
+                                    <span class="ui-paginator-prev ui-paginator-element ui-state-default ui-corner-all ui-state-disabled">
+                                        <span class="ui-icon ui-icon-seek-prev">p</span>
+                                    </span>
+                                    <span class="ui-paginator-pages">
+                                        <span class="ui-paginator-page ui-paginator-element ui-state-default ui-corner-all ui-state-active">1</span>
+                                        <span class="ui-paginator-page ui-paginator-element ui-state-default ui-corner-all">2</span>
+                                        <span class="ui-paginator-page ui-paginator-element ui-state-default ui-corner-all">3</span>
+                                        <span class="ui-paginator-page ui-paginator-element ui-state-default ui-corner-all">4</span>
+                                        <span class="ui-paginator-page ui-paginator-element ui-state-default ui-corner-all">5</span>
+                                    </span>
+                                    <span class="ui-paginator-next ui-paginator-element ui-state-default ui-corner-all">
+                                        <span class="ui-icon ui-icon-seek-next">p</span>
+                                    </span>
+                                    <span class="ui-paginator-last ui-paginator-element ui-state-default ui-corner-all">
+                                        <span class="ui-icon ui-icon-seek-end">p</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>                      
+                    </div>                    
+                    </fieldset>
+                    <div class="encuestas-botones">
+                        <button id="" name="" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" onclick="" type="submit" role="button" aria-disabled="false"><span class="ui-button-text ui-c">Guardar</span></button>
+                        <button id="" name="" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" onclick="" type="submit" role="button" aria-disabled="false"><span class="ui-button-text ui-c">Cancelar</span></button>
+                    </div>
+					
+					<div class="table-form">
+                    	<h4>Preguntas:</h4>    
+                        <div class="ui-datatable ui-widget">
+                        	<div class="ui-datatable-tablewrapper">
+                            	<table>
+                                	<thead>
+                                    	<tr role="row">
+                                        	<th class="ui-state-default"><span>ID</span></th>
+                                            <th class="ui-state-default"><span>Pregunta</span></th>
+                                            <th class="ui-state-default"><span>Importancia</span></th>
+                                            <th class="ui-state-default"><span>Orden</span></th>
+                                            <th class="ui-state-default"><span>Respuestas</span></th>
+                                            <th class="ui-state-default"><span>Acciones</span></th>
+                                      	</tr>
+                                 	</thead>
+                                    <tbody class="ui-datatable-data ui-widget-content">
+                                        <tr class="ui-widget-content ui-datatable-even">
+                                            <td>1140</td>
+                                            <td>¿El servicio cumplió sus expectativas?</td>
+                                            <td>1</td>
+                                            <td>1</td>
+                                            <td>2</td>
+                                            <td><a href="#" class="ver accion"></a> <a href="#" class="editar accion"></a> <a href="#" class="borrar accion"></a></td>
+                                        </tr>
+                                        <tr class="ui-widget-content ui-datatable-odd">
+                                            <td>1141</td>
+                                            <td>¿Recomendaría este servicio a alguien más?</td>
+                                            <td>2</td>
+                                            <td>2</td>
+                                            <td>2</td>
+                                            <td><a href="#" class="ver accion"></a> <a href="#" class="editar accion"></a> <a href="#" class="borrar accion"></a></td>
+                                        </tr>
+                                        <tr class="ui-widget-content ui-datatable-even">
+                                            <td>1142</td>
+                                            <td>En una escala de 1 a 5, siendo 1 muy malo y 5 excelente, ¿cómo calificaría usted el servicio?</td>
+                                            <td>3</td>
+                                            <td>3</td>
+                                            <td>5</td>
+                                            <td><a href="#" class="ver accion"></a> <a href="#" class="editar accion"></a> <a href="#" class="borrar accion"></a></td>
+                                        </tr>
+                                  	</tbody>
+                            	</table>
+                        	</div>
+                            <div class="ui-paginator ui-widget-header">
+                                <span class="ui-paginator-first ui-paginator-element ui-state-default ui-corner-all ui-state-disabled">
+                                    <span class="ui-icon ui-icon-seek-first">p</span>
+                               	</span>
+                                <span class="ui-paginator-prev ui-paginator-element ui-state-default ui-corner-all ui-state-disabled">
+                                	<span class="ui-icon ui-icon-seek-prev">p</span>
+                                </span>
+                                <span class="ui-paginator-pages">
+                                	<span class="ui-paginator-page ui-paginator-element ui-state-default ui-corner-all ui-state-active">1</span>
+                                    <span class="ui-paginator-page ui-paginator-element ui-state-default ui-corner-all">2</span>
+                                    <span class="ui-paginator-page ui-paginator-element ui-state-default ui-corner-all">3</span>
+                                    <span class="ui-paginator-page ui-paginator-element ui-state-default ui-corner-all">4</span>
+                                    <span class="ui-paginator-page ui-paginator-element ui-state-default ui-corner-all">5</span>
+                              	</span>
+                                <span class="ui-paginator-next ui-paginator-element ui-state-default ui-corner-all">
+                                	<span class="ui-icon ui-icon-seek-next">p</span>
+                              	</span>
+                                <span class="ui-paginator-last ui-paginator-element ui-state-default ui-corner-all">
+                                	<span class="ui-icon ui-icon-seek-end">p</span>
+                                </span>
+                            </div>
+                     	</div>  
+                        
+                  	</div>
+        	</div>
+        </div>
+
+<!--Hasta acá contenido-->
+
+    <footer><!-- Opcional -->
+    	<div class="contenedor">
+        	<div class="inner">
+            	Footer opcional
+        	</div>
+        </div>
+    </footer>
+
+<script src="js/jquery.js"></script>
+<script src="js/jquery-ui.js"></script>
+<!-- Agregar scripts de primefaces -->
+
+</body>
+</html>

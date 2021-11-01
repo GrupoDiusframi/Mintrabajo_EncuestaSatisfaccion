@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<f:view contentType="text/html">
+	<h:head>
+		<title>Mintrabajo Rep��blica de Colombia</title>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="description" content="Encuesta" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="shortcut icon" href="../../resources/images/favicon.ico" />
+		<link href="../../resources/css/jquery-ui.css" rel="stylesheet"
+			type="text/css" />
+		<link href="../../resources/css/primefaces.css" rel="stylesheet"
+			type="text/css" />
+		<link href="../../resources/css/encuestas.css" rel="stylesheet"
+			type="text/css" />
+	</h:head>
+	<h:body>
+		<!-- HEADER -->
+		<ui:include src="../../resources/html/header.xhtml" />
+
+		<div class="contenedor principal">
+			<div class="inner">
+				<!-- MEESAGES -->
+				<h:panelGroup id="pgAccionInfo"
+					rendered="#{not empty confirmacionBean.confirmarMensajeInformacion and confirmacionBean.confirmarMensajeInformacion}">
+					<div class="ui-state-success ui-corner-all">
+						<p>
+							<span class="ui-icon ui-icon-circle-check"
+								style="float: left; margin-right: .3em;"></span>
+							<p:outputLabel value="#{confirmacionBean.mensaje.cuerpo}" />
+						</p>
+					</div>
+				</h:panelGroup>
+
+				<h:panelGroup id="pgAccionError"
+					rendered="#{not empty confirmacionBean.confirmarMensajeInformacion and not confirmacionBean.confirmarMensajeInformacion}">
+					<div class="ui-state-error ui-corner-all">
+						<p>
+							<span class="ui-icon ui-icon-alert"
+								style="float: left; margin-right: .3em;"></span><strong>Error:</strong>
+							<p:outputLabel
+								value="#{confirmacionBean.mensaje.exception.message}" />
+						</p>
+					</div>
+				</h:panelGroup>
+
+				<!-- BODY -->
+				<h:form id="frmRegistroEncuesta" prependId="false">
+
+					<div class="encuestas-botones">
+					   <a href="http://www.mintrabajo.gov.co/index.php">
+						<button value="#"
+							class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
+							type="button">
+							<span class="ui-button-text ui-c">Salir</span>
+						</button>
+						</a>
+					</div>
+				</h:form>
+			</div>
+		</div>
+
+		<!-- FOOTER -->
+		<ui:include src="../../resources/html/footer.xhtml" />
+		<!--  <script src="js/jquery.js"></script>
+		<script src="js/jquery-ui.js"></script>-->
+	</h:body>
+</f:view>
+</html>

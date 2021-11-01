@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<f:view contentType="text/html">
+	<h:head>
+		<title>Mintrabajo República de Colombia</title>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="description" content="Encuesta" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="shortcut icon" href="../../resources/images/favicon.ico" />
+		<link href="../../resources/css/jquery-ui.css" rel="stylesheet"
+			type="text/css" />
+		<link href="../../resources/css/primefaces.css" rel="stylesheet"
+			type="text/css" />
+		<link href="../../resources/css/encuestas.css" rel="stylesheet"
+			type="text/css" />
+		<style>
+			hr {
+			  	height: 22px;
+			  	background: #2E967D 50% 50% repeat-x;
+				}
+		</style>
+	</h:head>
+	<h:body>
+		<!-- HEADER -->
+		<ui:include src="../../resources/html/header.xhtml" />
+		<p:messages id="mensajes" showDetail="false" life="2000" />
+		<div style="text-align: center">
+		 <p:dialog widgetVar="dialogo" modal="true" header="Informacion" draggable="false" closable="false" resizable="false">
+          	<h1>Le encuesta que está intentando diligenciar ya fue respondida anteriormente, gracias por su tiempo.</h1>
+				<a href="http://www.mintrabajo.gov.co/web/guest/inicio" style="text-decoration:none;">
+						<button style="background:#006850" value="#"
+							class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
+							type="button" onclick="window.close();">
+							<span class="ui-button-text ui-c">Salir</span>
+						</button>
+					</a> 			
+				</p:dialog>
+			</div> 
+			<div class="contenedor principal">
+				<div class="inner">
+					<h1><p:outputLabel value="#{encuestaRespuestaBean.encuesta.titulo}" style="text-align: center; color:#3e99ff"/>
+					</h1>
+					<br/>
+					<HR/>
+					<p:fieldset id="fsRespuestaEncuesta"> 					
+						    <p:outputLabel value="No Radicado solicitud">
+						    	<br/>
+						    	<p:inputText style="width: 13em; opacity: unset " value="#{encuestaRespuestaBean.numeroRadicado}" disabled="true"/>
+						    </p:outputLabel>
+						    <br/>
+    						<p:outputLabel id="olSubtitulo"
+							value="#{encuestaRespuestaBean.encuesta.subtitulo}" />
+							<br />
+						
+						<div class="ui-grid ui-grid-responsive">
+							<h:form id="frmRegistroRespuestaEncuesta">
+								<p:dataTable var="pregunta" varStatus="status" value="#{encuestaRespuestaBean.encuesta.preguntas}">									
+									<p:columnGroup type="header">
+										<p:row>
+											<p:column headerText="" colspan="3"/>
+											<p:column headerText="Excelente" />
+											<p:column headerText="Bueno" />
+											<p:column headerText="Regular" />
+											<p:column headerText="Malo" />
+										</p:row>
+									</p:columnGroup>
+									<p:column colspan="3">
+										<h:outputText for="console" value="#{pregunta.titulo}"/>
+									</p:column>
+										<p:column colspan="4">
+													<div style="margin-left: 3em;">
+											<p:selectOneRadio id="console" 
+												value="#{pregunta.codigoRespuestaSeleccionada}"
+												required="true" label="Respuesta requerida en #{pregunta.titulo}">
+												<f:selectItems value="#{pregunta.respuestas}"
+													var="respuesta" itemLabel=""
+													itemValue="#{respuesta.codigoCast}"/>																									
+											</p:selectOneRadio>
+											<h:messages for="console"/>
+											</div>	
+									</p:column>																								
+								</p:dataTable>				
+								<!-- BOTONES DE ENVIO -->
+								<div class="encuestas-botones">
+									<p:commandButton style="background:#006850" id="btEnviar"
+										value="#{mintrabajo['mintrabajo.label.enviar']}"
+										actionListener="#{encuestaRespuestaBean.enviarDatos}"
+										update=":mensajes">
+										<p:confirm
+											message="#{mintrabajo['mintrabajo.message.estaSeguroEnvio']}" />
+									</p:commandButton>
+									<p:confirmDialog global="true" showEffect="fade"
+										hideEffect="fade">
+										<p:commandButton style="background:#006850" value="#{mintrabajo['mintrabajo.label.si']}"
+											styleClass="ui-confirmdialog-yes"/>
+										<p:commandButton style="background:#006850" value="#{mintrabajo['mintrabajo.label.no']}"
+											styleClass="ui-confirmdialog-no" />
+									</p:confirmDialog>
+								</div>
+							</h:form>
+						</div>
+					</p:fieldset>
+				</div>
+			</div>
+	</h:body>
+</f:view>
+</html>

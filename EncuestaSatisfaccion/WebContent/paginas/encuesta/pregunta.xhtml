@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+	<!-- TABLA PREGUNTAS -->
+
+	<h:messages id="messagesPregunta" styleClass="messages" />
+	<p:fieldset id="fsPreguntas" legend="Preguntas">
+		<p>Diligencie los campos del siguiente formulario para crear
+			preguntas y opciones para la encuesta.</p>
+		<p:dataTable id="tbPreguntas" var="preguntaRow"
+			value="#{encuestaBean.encuesta.preguntas}" rows="10" paginator="true">
+			<f:facet name="header">
+				<h:panelGroup id="pgAccionesPreguntas">
+					<p:commandButton value="Agregar"
+						action="#{encuestaBean.abrirDialogAction}"
+						oncomplete="PF('wvPregunta').show();"
+						update=":frmRegistroEncuesta:dgPregunta" />
+				</h:panelGroup>
+			</f:facet>
+			<p:column headerText="Título">
+				<h:outputText value="#{preguntaRow.titulo}" />
+			</p:column>
+			<p:column headerText="Orden">
+				<h:outputText value="#{preguntaRow.numeroOrden}" />
+			</p:column>
+			<p:column headerText="Acciones">
+				<p:commandLink id="clEditar" styleClass="editar accion"
+					actionListener="#{encuestaBean.editarPregunta}"
+					oncomplete="PF('wvPregunta').show();"
+					update=":frmRegistroEncuesta:dgPregunta">
+					<f:attribute name="attEditar" value="#{preguntaRow}" />
+				</p:commandLink>
+				<p:commandLink id="clEliminar" styleClass="borrar accion"
+					actionListener="#{encuestaBean.eliminarPreguntaAction}">
+					<f:attribute name="attEliminar" value="#{preguntaRow}" />
+					<p:ajax update = "tbPreguntas"></p:ajax>
+				</p:commandLink>
+			</p:column>
+		</p:dataTable>
+	</p:fieldset>
+
+	<!--DIALOGO PREGUNTA  -->
+	<p:dialog id="dgPregunta" widgetVar="wvPregunta" modal="true"
+		width="85%" height="60%" >
+		
+				<!-- PREGUNTA -->
+				<div class="borde-respuesta">
+				<p:fieldset id="fsPregunta" legend="Pregunta">
+					<div class="ui-grid ui-grid-responsive">
+						<div class="ui-grid-row">
+							<div class="ui-grid-col-8">
+								<p:inputTextarea id="itTituloPregunta" 
+									styleClass="#{encuestaBean.tituloPregunta ? '' : 'ui-state-error'}"
+																				   
+									value="#{encuestaBean.pregunta.titulo}" rows="2" cols="50"
+									maxlength="500" autoResize="false" />							
+								<p:tooltip showEvent="focus" for="itTituloPregunta"
+									value="#{mintrabajo['mintrabajo.tooltip.tituloPregunta']}" />
+								<p:message for="itTituloPregunta" />
+							</div>
+							<div class="ui-grid-col-2">
+								<p:outputLabel for="somOrdenPregunta"
+									value="#{mintrabajo['mintrabajo.label.cantidad']}" />
+								<p:selectOneMenu id="somOrdenPregunta" style="width:120px"
+									value="#{encuestaBean.pregunta.numeroOrden}"
+									styleClass="encuestas-ancho #{encuestaBean.ordenPregunta ? '' : 'ui-state-error'}">
+									<f:selectItem itemLabel="-Seleccione la opción-" />
+									<f:selectItem itemLabel="1" itemValue="1" />
+									<f:selectItem itemLabel="2" itemValue="2" />
+									<f:selectItem itemLabel="3" itemValue="3" />
+									<f:selectItem itemLabel="4" itemValue="4" />
+									<f:selectItem itemLabel="5" itemValue="5" />
+								</p:selectOneMenu>
+								<p:tooltip showEvent="focus" for="somOrdenPregunta"
+									value="#{mintrabajo['mintrabajo.tooltip.ordenPregunta']}" />
+								<p:message for="somOrdenPregunta" />
+							</div>
+							<div class="ui-grid-col-2">
+								<p:outputLabel for="somPesoPregunta"
+									value="#{mintrabajo['mintrabajo.label.tipoPregunta']}" />
+								<p:selectOneMenu id="somPesoPregunta" style="width:125px"
+									value="#{encuestaBean.pregunta.valorTipoPregunta}"
+									styleClass="encuestas-ancho" disabled="true">
+									<f:selectItem itemLabel="-Seleccione la opción-" />
+									<f:selectItem itemLabel="Abierta" itemValue="0" />
+									<f:selectItem itemLabel="Cerrada" itemValue="1" />
+								</p:selectOneMenu>
+								<p:tooltip showEvent="focus" for="somPesoPregunta"
+									value="#{mintrabajo['mintrabajo.tooltip.pesoPregunta']}" />
+								<p:message for="somPesoPregunta" />
+							</div>
+						</div>
+					</div>
+					<!-- RESPUESTAS -->
+					<ui:include src="respuesta.xhtml" />
+				</p:fieldset>
+				<div class="encuestas-botones">
+					<p:commandButton value="#{not encuestaBean.editarRespuesta ? mintrabajo['mintrabajo.label.aceptar']: mintrabajo['mintrabajo.label.agregar']}"
+						actionListener="#{encuestaBean.agregarPreguntaActionListener}"
+						update=":frmRegistroEncuesta:tbPreguntas :frmRegistroEncuesta:tbPreguntas"
+						oncomplete="#{encuestaBean.closeDialogQuery}" />
+					<p:commandButton value="Cancelar"
+						update=":frmRegistroEncuesta:tbPreguntas"
+						oncomplete="PF('wvPregunta').hide();" />
+				</div>
+			</div>
+	</p:dialog>
+</ui:composition>

@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<f:view contentType="text/html">
+	<h:head>
+		<title>Mintrabajo República de Colombia</title>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="description" content="Encuesta" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="shortcut icon" href="../../resources/images/favicon.ico" />
+		<link href="../../resources/css/jquery-ui.css" rel="stylesheet"
+			type="text/css" />
+		<link href="../../resources/css/primefaces.css" rel="stylesheet"
+			type="text/css" />
+		<link href="../../resources/css/encuestas.css" rel="stylesheet"
+			type="text/css" />
+		
+	</h:head>
+	<h:body>
+		<!-- HEADER -->
+		<ui:include src="../../resources/html/header.xhtml" />
+
+		<p:messages id="mensajes" showDetail="false" life="2000" />
+		<h:form id="frmLogin" prependId="false">
+			<div class="contenedor principal">
+				<div class="inner">
+					<fieldset id="fsLogin"
+						class="ui-fieldset ui-widget ui-widget-content ui-corner-all ui-hidden-container"
+						data-widget="">
+						<legend class="ui-fieldset-legend ui-corner-all ui-state-default">Inicio
+							de sesión</legend>
+						<div class="ui-fieldset-content">
+							<div class="ui-grid-row">
+								<div class="ui-grid-col-3">
+									<p:outputLabel for="itUsuario"
+										value="#{mintrabajo['mintrabajo.label.usuario']}" />
+									<p:inputText id="itUsuario"
+										value="#{loginBean.usuario.usuario}" required="true" />
+									<p:tooltip showEvent="focus" for="itUsuario"
+										value="#{mintrabajo['mintrabajo.label.usuario']}" />
+								</div>
+							</div>
+							<div class="ui-grid-row">
+								<div class="ui-grid-col-3">
+									<p:outputLabel for="itContrasena"
+										value="#{mintrabajo['mintrabajo.label.contrasenia']}" />
+									<p:password id="itContrasena"
+										value="#{loginBean.usuario.contrasena}" required="true" />
+									<p:tooltip showEvent="focus" for="itContrasena"
+										value="#{mintrabajo['mintrabajo.label.contrasenia']}" />
+								</div>
+							</div>
+						</div>
+					</fieldset>
+					<div class="encuestas-botones">
+						<p:commandButton
+							value="#{mintrabajo['mintrabajo.tittle.inicioSesion']}"
+							actionListener="#{loginBean.validaUsuario}" update=":mensajes" 
+							/>
+					</div>
+				</div>
+			</div>
+		</h:form>
+
+		<!-- FOOTER -->
+		<ui:include src="../../resources/html/footer.xhtml" />
+
+		<script src="js/jquery.js"></script>
+		<script src="js/jquery-ui.js"></script>
+	</h:body>
+</f:view>
+</html>
